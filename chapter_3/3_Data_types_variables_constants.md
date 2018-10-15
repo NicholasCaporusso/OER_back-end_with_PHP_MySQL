@@ -273,7 +273,7 @@ echo $string; // My name is Nicholas and I was born in 1981
 ```
 
 ## Constants
-As shown in the previous examples, the content of a variable can change during the program. Instead, in programming languages, *constants* are containers for data that are not expected to change during the execution of the program. Constants are typically defined at the beginning of a script, and their value will be the same throughout the script. Constants are useful for specifying the application settings (e.g., the name of our web application). Differently than variables, which are preceded by the symbol `$` (dollar), constants are not preceded by anything.
+As shown in the previous examples, the content of a variable can change during the program. Instead, in programming languages, *constants* are containers for data that are not expected to change during the execution of the program. Constants are typically defined at the beginning of a script, and their value will be the same throughout the script. Constants are useful for specifying the application settings (e.g., the name of our web application). Differently than variables, which are preceded by the symbol `$` (dollar), constants are not preceded by any symbols.
 
 In PHP, constants are defined using the `define` construct (shown below). The first element of the define statement is the name of the constant as a string (within single or double quotes), the latter specifies its value, which can be defined using any of the primitive data types.
 
