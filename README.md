@@ -1,0 +1,2 @@
+# About
+This is the repository for "Essential back-end development with PHP and MySQL", an Open Educational Resource developed by Nicholas Caporusso in the context of the Open Educational Resource Grant offered by Fort Hays State University (http://www.fhsu.edu)
