@@ -1,6 +1,6 @@
 # Structures for flow control
 Software programs consist of algorithms, that is, lists of operations that are executed in a sequential and deterministic order to accomplish an objective. While some tasks require actions to be realized in the same order as they were originally coded, other tasks might require to execute a set of instructions to be executed only if some conditions are met; also, some other tasks might require to  repeat the same set of operations several times, until a desired condition is verified. As a result, instructions might be executed in a different sequence than the order specified in the source code.  
-![Cat](https://raw.githubusercontent.com/NicholasCaporusso/OER_back-end_with_PHP_MySQL/assets/chapter_4/test.png)
+![Cat](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/test.png)
 
 Control structures are the elements of programming languages that enable dynamically changing the flow of code execution depending on some conditions, and thus, they result in the capability of a program of giving different responses (output) based on a different set of inputs. The ability to alter the flow of a program is one of the most basic yet powerful features of programming languages, as this enables developers to create programs that can automatically respond to different inputs or conditions, and take simple decisions or realize repetitive tasks iteratively.  Programming languages typically implement  two fundamental control structures:
 - conditional statements: realizing a different set of actions depending on some condition (if condition then action 1 else action 2)
@@ -15,7 +15,7 @@ Control structures are very similar across multiple programming languages: altho
 ### If
 The simplest form of conditional statement is described by a condition and a set of actions that is executed if a condition is verified. In  case the condition is not verified, the block of actions will not be executed. In a way, conditional statement enable developers to write "intelligent" programs that can autonomously and automatically take decisions, though their behavior is programmed. 
 
-In PHP, this is implemented using the syntax described by the following pseudo-code
+In PHP, this is implemented using the syntax described by the following pseudo-code:
 ```
 if(condition){
 statement(s);
@@ -27,10 +27,12 @@ The condition can be represented by any expression that has a boolean value as a
 An example of this control structure is the case of a cafeteria offering blueberry scones only on Monday morning. As a result, the owner will post a sign only if it is monday.  
 
 We can implement it in PHP using the following code
+<?php
 $day='monday';
 if($day=='monday'){
 echo 'Try our blueberry scones! They are available on Monday, only';
 }
+?>
 
 If you change the content of the variable $day in the first statement, the block enclosed in the curly braces will not be executed.
 
@@ -178,7 +180,9 @@ $age=19;
 
 When used with simple conditions, the ternary logic is very effective because it results in simpler and more compact code, which is also easier to maintain. Moreover, as the  if..else, ternary operators can be nested with one another using parentheses. For instance,  we could implement the example from the discount at the museum as follows
 
+<?php
 ($age)
+?>
 
 As you can see, while one operator makes our programs less verbose, nesting multiple operators affects the readability of our code, and makes them harder to maintain. This is why it is not recommended to nest more than 2-3 shorthand if..else operators. Despite its apparent complexity, ternary logic is extremely useful, and it is one of the most favorite constructs of experienced developers. Just remember that this statement can be utilized only in situations in which the if..else block returns a value. Its main difference with the regular if..else is that it cannot be utilized to realize two different types of instructions.
 
@@ -261,6 +265,8 @@ In case multiple alternative correspond to the same code, cases can be listed af
 
 One of the main differences between the switch..case and the if..elseif..else structure is in the type of comparison operators supported by the statement. By default, the switch..case checks if a variable is equal to any of the options presented in each case, whereas the if..elseif...else block enables making more types of comparisons. For instance, using the switch..case structure for comparing if the value of a variable is less than a given value requires some tweaking, as shown in the following example. 
 
+```php
+<?php
 switch (true) {
     case $count <= 20:
         $priority = 'low';
@@ -278,6 +284,8 @@ switch (true) {
         $priority = 'severe';
         break;
 }
+?>
+```
 
 ### Which conditional statement do I use?
 The if..else block alone is powerful enough to serve most of the cases, and elseif statements can be introduced whenever there are more than 2 conditions to check. The switch ..case is the best choice for comparing a variable that has more than 3 possible alternative values. 
@@ -307,6 +315,8 @@ The while loop will test if the expression within parentheses is verified. If th
 
 As for control structures, the condition is specified within parentheses after the keyword while. Also, the block of instructions is identified by curly braces.
 
+```php
+<?php
 $a=4;
 $b=0;
 while($b<$a){
@@ -314,6 +324,8 @@ while($b<$a){
 	echo 'b: '.$b ;
 	$a++
 }
+?>
+```
 
 The previous example will check whether b is smaller than a, if so, it will loop. The program will continue looping until the condition is false, that is, b will be equal to a. This will happen after 5 loops.
 
@@ -333,10 +345,14 @@ while(false){
 
 On the contrary,  the following code will be executed forever, because the expression in the condition will never become false. Although this might also seem useless, it is very common in programs that are always active. Examples are web servers, services of the Operating System, or loops for rendering scenese in video games. By keeping execution in an infinite iteration, we will prevent it to reach the end of the program and to terminate its processing: as a result, the program will stay alive and repeat a set of operations.   
 
+```php
+<?php
 while(true){
 checkMail()
 delay()
-} 
+}
+?>
+```
 
 In the previous example, the code is deliberately designed to force the program to repeatedly execute the same operations over and over again. 
 
@@ -353,6 +369,8 @@ As you can see, the main difference between the while and the do...while loop is
 
 Let's write the previous examples in a do...while form, so that we can see the difference between the two loops.
 
+```php
+<?php
 $a=4;
 $b=0;
 do{
@@ -360,6 +378,8 @@ do{
 	echo 'b: '.$b ;
 	$a++
 }while($b<$a)
+?>
+```
 
 Indeed, the code looks very similar to the previous example, as the only change (in addition to the "do" keyword) is the condition, which now is at the end of the loop. However, the result will be different in that it will loop one less time. The second example about the while loop, when translated using the do..while (shown below), will produce similar behavior. We could make them work in exactly the same way as their while counterparts by tweaking the exit condition, or by initializing the variables differently.
 
@@ -370,6 +390,8 @@ echo $i++
 
 The do..while loop might seem useless, at this point. However, it can be suitable for some applications, as shown below. Nevertheless, programmers prefer to use the while loop. In the following example the do..while loop is utilized to calculate the factorial of a number.
 
+```php
+<?php
 $number=5;
 $i=0;
 do{
@@ -377,15 +399,19 @@ $factorial*=$number;
 $i++;
 }while($i<$number);
 echo $factorial;
+?>
+```
 
 ### For
 As demonstrated by all the examples so far, the use of loops typically involves three steps: initializing a variable that will be utilized to verify the exit condition, testing the exit condition, and changing the value of the variable, so that the exit condition will be reached, at some point. 
 
 Although there are exceptions, such as, the example involving generating a new string, the exit condition of most of the loops involves an integer variable that is (1) initialized, (2) tested, and then (3) manipulated, that is, incremented or decremented. In these situations, the for loop is the most convenient choice, as it enables to incorporate the three steps described above in a single expression. Its syntax is the following
 
+```
 for(initialization;test;manipulation){
 actions
 }
+```
 
 As for the while loop, a keyword introduces the block. Then, in parentheses, there are three expression. The first is used to initialize the variable that will be used in the loop, and it's executed the first time the program encounters the for. The second expression is executed at the beginning of every loop, and if it evaluates to true, the statements in curly braces will be executed, otherwise they will be skipped. The third expression will be executed at the end of every loop, after all the instructions in the block have been executed. In general, the third expression alters the the value of the variable that is utilized in the second expression, so that the condition will not be verified anymore, at some point.
 
