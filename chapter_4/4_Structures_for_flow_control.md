@@ -1,10 +1,9 @@
 # Structures for flow control
-Software programs consist of algorithms, that is, lists of operations that are executed in a sequential and deterministic order to accomplish an objective. While some tasks require actions to be realized in the same order as they were originally coded, other tasks might require to execute a set of instructions to be executed only if some conditions are met; also, some other tasks might require to  repeat the same set of operations several times, until a desired condition is verified. As a result, instructions might be executed in a different sequence than the order specified in the source code.  
-![Cat](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/cat.png)
+Software programs consist of algorithms, that is, lists of operations that are executed in a sequential and deterministic order to accomplish an objective. While some tasks require actions to be realized in the same order as they were originally coded, other tasks might require to execute a set of instructions to be executed only if some conditions are met; also, some other tasks might require to  repeat the same set of operations several times, until a desired outcome is achieved, or a specific condition is met. As a result, when programs are launched, their instructions might be executed in a different sequence than the order specified in the source code.  
 
-Control structures are the elements of programming languages that enable dynamically changing the flow of code execution depending on some conditions, and thus, they result in the capability of a program of giving different responses (output) based on a different set of inputs. The ability to alter the flow of a program is one of the most basic yet powerful features of programming languages, as this enables developers to create programs that can automatically respond to different inputs or conditions, and take simple decisions or realize repetitive tasks iteratively.  Programming languages typically implement  two fundamental control structures:
-- conditional statements: realizing a different set of actions depending on some condition (if condition then action 1 else action 2)
-- loops: reiterating a set of actions a number of times until a condition is verified (while condition do action)
+Control structures are the elements of programming languages that enable dynamically changing the flow of code execution depending on some conditions, and thus, they result in the capability of an algorithm of giving different responses (output) based on a different set of inputs. The ability to alter the flow of execution of the source code is one of the most basic yet powerful features of programming languages, as this enables developers to create programs that can automatically respond to different inputs or conditions, and take simple decisions or realize repetitive tasks iteratively.  Programming languages typically implement two fundamental control structures:
+- *conditional statements*: realizing a different set of actions depending on some condition (if condition then action 1 else action 2)
+- *iterative statements or loops*: reiterating a set of actions a number of times until a condition is verified (while condition do action)
 
 The following flowchart diagrams explain the general behavior of conditional statements and loops. In a conditional statement, the program checks a condition and executes one block of code if the condition is verified, and a different block of code (if present) if the condition is not verified. In a loop block, the program will repeat a set of actions until a condition is verified, otherwise it will stop reiterating. In both cases, after the control structure, execution will continue with the next block.
 
@@ -17,22 +16,26 @@ The simplest form of conditional statement is described by a condition and a set
 
 In PHP, this is implemented using the syntax described by the following pseudo-code:
 ```
-if(condition){
-statement(s);
+if(<condition>){
+    <statement(s)>
 }
 ```
 
 The condition can be represented by any expression that has a boolean value as a result. Notice that the block of statements belonging to the control structure are enclosed in curly braces, and they can contain an arbitrary number of lines. By doing this, PHP can determine the instructions that will be executed if the condition is verified. 
 
+![Example: if then ese](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/if.png)]
+
 An example of this control structure is the case of a cafeteria offering blueberry scones only on Monday morning. As a result, the owner will post a sign only if it is monday.  
 
 We can implement it in PHP using the following code
+```php
 <?php
 $day='monday';
 if($day=='monday'){
 echo 'Try our blueberry scones! They are available on Monday, only';
 }
 ?>
+```
 
 If you change the content of the variable $day in the first statement, the block enclosed in the curly braces will not be executed.
 
@@ -52,10 +55,10 @@ An example is an age verification system that enables only people who are 18+ to
 <?php
 $age=19;
 if($age>=18){
-    echo 'you are allowed to vote';
+	echo 'You are allowed to vote';
 }
 else{
-    echo 'you are not allowed to vote, because you are not 18 yet';
+	echo 'You are not allowed to vote, because you are not 18 yet';
 }
 ?>
 ```
@@ -175,8 +178,12 @@ Its syntax is the following
 ```
 
 As you can see, the statement will not execute instructions. Instead, it will just produce a different value based on the condition. Then, the value can be stored in a variable or printed in the html page. For instance, we can implement the example from the voting system as foillows
+```php
+<?php
 $age=19;
  echo ($age>18) ? 'You can vote' : 'You cannot vote';
+?>
+```
 
 When used with simple conditions, the ternary logic is very effective because it results in simpler and more compact code, which is also easier to maintain. Moreover, as the  if..else, ternary operators can be nested with one another using parentheses. For instance,  we could implement the example from the discount at the museum as follows
 
@@ -554,6 +561,9 @@ echo $match ? 'Welcome to our website' : 'The username or password does not matc
 
 The keywords Break and continue can be utilized with any type of loop. Moreover, in case of nested loops, they have effect on the innermost structure, only.
 
+
+### Alternative syntax
+TO BE DEFINED
 
 ### Which loop do I use?
 As described in this chapter, there are 4 types of loops in PHP.  Especially at the beginning,  it might be difficult to choose which one to use for solving a problem. The decision can be simplified by reasoning by exclusion:
