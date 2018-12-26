@@ -14,6 +14,8 @@ Control structures are very similar across multiple programming languages: altho
 ### If
 The simplest form of conditional statement is described by a condition and a set of actions that is executed if a condition is verified. In  case the condition is not verified, the block of actions will not be executed. In a way, conditional statement enable developers to write "intelligent" programs that can autonomously and automatically take decisions, though their behavior is programmed. 
 
+![Example: if](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/if.png)
+
 In PHP, this is implemented using the syntax described by the following pseudo-code:
 ```
 if(<condition>){
@@ -22,8 +24,6 @@ if(<condition>){
 ```
 
 The condition can be represented by any expression that has a boolean value as a result. Notice that the block of statements belonging to the control structure are enclosed in curly braces, and they can contain an arbitrary number of lines. By doing this, PHP can determine the instructions that will be executed if the condition is verified. 
-
-![Example: if then ese](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/if.png)]
 
 An example of this control structure is the case of a cafeteria offering blueberry scones only on Monday morning. As a result, the owner will post a sign only if it is monday.  
 
@@ -40,7 +40,11 @@ echo 'Try our blueberry scones! They are available on Monday, only';
 If you change the content of the variable $day in the first statement, the block enclosed in the curly braces will not be executed.
 
 ### If ...else
-Moreover, conditional statements can be utilized to execute two different blocks of instructions. This can be implemented in PHP using the following syntax pseudo-code 
+Moreover, conditional statements can be utilized to execute two different blocks of instructions. 
+
+![Example: if..else](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/if_else.png)
+
+This can be implemented in PHP using the following syntax pseudo-code 
 ```
 if(<condition>){
     <action if condition is true>
@@ -123,7 +127,11 @@ Please note that we could skip the parentheses in the first block because it con
 
 
 ### If..elseif..else
-In some cases, conditions might involve more than two choices. In this case, control structures can be utilized to check multiple alternatives using the elseif keyword. The PHP syntax is the following.
+In some cases, conditions might involve more than two choices. In this case, control structures can be utilized to check multiple alternatives using the elseif keyword. 
+
+![Example: if..elseif...else](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/if_elseif_else.png)
+
+The PHP syntax is the following.
 ```
 if(condition){
 action if condition is true for alternative 1
@@ -217,7 +225,11 @@ echo 'Taking into account your age and score, you are: ',($age > 10 ? ($score < 
 ```
 
 ### Switch...case
-The elseif keyword is very useful you have multiple conditions to check for. However, in case you have to check for 4 or more alternatives, it becomes verbose and makes code harder to read and to maintain. The switch-case structure is an efficient alternative to the if-elseif-else statement: it tests a variable against a series of values until it finds a match, and then executes the block of code corresponding to that match. Its syntax is the following:
+The elseif keyword is very useful you have multiple conditions to check for. However, in case you have to check for 4 or more alternatives, it becomes verbose and makes code harder to read and to maintain. The switch-case structure is an efficient alternative to the if-elseif-else statement: it tests a variable against a series of values until it finds a match, and then executes the block of code corresponding to that match. 
+
+![Example: switch](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/switch.png)
+
+Its syntax is the following:
 ```
 switch (expression)
   {
@@ -311,7 +323,11 @@ Although there are mainly 4 types of loops (and all of them are implemented in P
 -foreach loops over a specified list of items and executes a block of code as many times as the number of items in the list
 
 ### While 
-The while loop is the simplest type of loop, as it checks for the condition and executes a block of statements until the condition is false.  Its syntax is the following
+The while loop is the simplest type of loop, as it checks for the condition and executes a block of statements until the condition is false.
+
+![Example: while](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/while.png)
+
+Its syntax is the following
 ```
 while(expression){
 	
@@ -340,15 +356,21 @@ An important step in using the while loop is initializing the variable that will
 
 As shown for the if conditional statement, curly braces  can be omitted only if it consists of a single line.
 
+```php
+<?php
 $i=0
 while($i<5) echo $i++;
+?>
+```
 
 Conditions play a crucial role in structures for flow control, and specifically in loops: they determine the exit condition for the loop. Failing to define an exit condition properly will result in a loop that either will never execute, or will never terminate its iteration. For instance, if we replace the  condition in the example above with while($i>5), the program will never enter in the block of code defined in the while. Also, increment or decrement operations that affect the exit condition are crucial: if we omitted the increment operation, or if we replaced it with echo $i, the loop will never verify its termination condition, thus, forcing the program in the block forever. This type of errors can cause the web server to crash, because they will keep it constantly engaged in a never-ending process.
 
 The value of expressions in a condition must be of boolean type. As a result, the boolean values true and false can be utilized in condition. This will produce interesting results: intuitively, in the following code the block of instructions in the loop will never be executed. As it does not make sense to write code that will never be utilized, the following example is completely useless
-  
+
+```php
 while(false){
 }
+```
 
 On the contrary,  the following code will be executed forever, because the expression in the condition will never become false. Although this might also seem useless, it is very common in programs that are always active. Examples are web servers, services of the Operating System, or loops for rendering scenese in video games. By keeping execution in an infinite iteration, we will prevent it to reach the end of the program and to terminate its processing: as a result, the program will stay alive and repeat a set of operations.   
 
@@ -364,7 +386,11 @@ delay()
 In the previous example, the code is deliberately designed to force the program to repeatedly execute the same operations over and over again. 
 
 ### Do..while
-The do..while loop is very similar to the while loop and it is utilized very rarely, compared to the while. Its syntax is the following
+The do..while loop is very similar to the while loop and it is utilized very rarely, compared to the while. 
+
+![Example: do..while](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/do_while.png)
+
+Its syntax is the following
 
 ```
 do{
@@ -412,6 +438,8 @@ echo $factorial;
 ### For
 As demonstrated by all the examples so far, the use of loops typically involves three steps: initializing a variable that will be utilized to verify the exit condition, testing the exit condition, and changing the value of the variable, so that the exit condition will be reached, at some point. 
 
+![Example: for](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/for.png)
+
 Although there are exceptions, such as, the example involving generating a new string, the exit condition of most of the loops involves an integer variable that is (1) initialized, (2) tested, and then (3) manipulated, that is, incremented or decremented. In these situations, the for loop is the most convenient choice, as it enables to incorporate the three steps described above in a single expression. Its syntax is the following
 
 ```
@@ -445,8 +473,12 @@ $lightColor=red
 In general, when utilized to loop through arrays, the for structure is not expected to add or remove elements, as it might produce errors. In the previous two examples, the function count(array) is utilized to get the length of the array. Although it could be incorporated in the definition of the loop, this would cause the program to calculate the length of the array at every loop, when the condition is evaluated. However, as the length of the array is not expected to change during the loop, this would just be a waste of processing resources, which could be significant if the array is very large. By calculating the length of the array before the loop, we can optimize the performance of our code.
 
 ### Foreach
-The fourth type of interative structure implemented in PHP is the foreach loop, which is utilized primarily for navigating arrays and enumerable structures (e.g., properties of objects and resoruces). The syntax of this type of loop is different than the previous ones, with specific regard to its exit condition, which does not involve any variable comparison. The general structure of a foreach loop is defined by the following pseudo-code:
-```
+The fourth type of interative structure implemented in PHP is the foreach loop, which is utilized primarily for navigating arrays and enumerable structures (e.g., properties of objects and resoruces). The syntax of this type of loop is different than the previous ones, with specific regard to its exit condition, which does not involve any variable comparison. 
+
+![Example: foreach](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/foreach.png)
+
+The general structure of a foreach loop is defined by the following pseudo-code:
+```php
 foreach(set as element){
 	instructions
 }
