@@ -17,7 +17,7 @@ The simplest form of conditional statement is described by a condition and a set
 ![Example: if](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/if.png)
 
 In PHP, this is implemented using the syntax described by the following pseudo-code:
-```
+```php
 if(<condition>){
     <statement(s)>
 }
@@ -45,7 +45,7 @@ Moreover, conditional statements can be utilized to execute two different blocks
 ![Example: if..else](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/if_else.png)
 
 This can be implemented in PHP using the following syntax pseudo-code 
-```
+```php
 if(<condition>){
     <action if condition is true>
 }else{
@@ -132,7 +132,7 @@ In some cases, conditions might involve more than two choices. In this case, con
 ![Example: if..elseif...else](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/if_elseif_else.png)
 
 The PHP syntax is the following.
-```
+```php
 if(condition){
 action if condition is true for alternative 1
 }elseif(condition){
@@ -181,7 +181,7 @@ PHP supports an unlimited number of elseif evaluations. However, adding too many
 Conditional structures are realized more often than one may think. Several times, this happens for executing two different sets of instructions. However, if else statements are utilized to assign a different value to a variable, or output a different value, based on a condition. Think about the example of the voting system: we just needed to print a different message depending on the age of the individual. The ternary operator is very useful in this circumstance, as it returns a different value based on the condition. It is called the ternary operator because it takes three operands - a condition, a result for true, and a result for false. 
 
 Its syntax is the following
-```
+```php
 (condition) ? value if true : value if false
 ```
 
@@ -194,11 +194,11 @@ $age=19;
 ```
 
 When used with simple conditions, the ternary logic is very effective because it results in simpler and more compact code, which is also easier to maintain. Moreover, as the  if..else, ternary operators can be nested with one another using parentheses. For instance,  we could implement the example from the discount at the museum as follows
-
+```php
 <?php
 ($age)
 ?>
-
+```
 As you can see, while one operator makes our programs less verbose, nesting multiple operators affects the readability of our code, and makes them harder to maintain. This is why it is not recommended to nest more than 2-3 shorthand if..else operators. Despite its apparent complexity, ternary logic is extremely useful, and it is one of the most favorite constructs of experienced developers. Just remember that this statement can be utilized only in situations in which the if..else block returns a value. Its main difference with the regular if..else is that it cannot be utilized to realize two different types of instructions.
 
 If you don't feel confident in using it yet, keep calm and use the standard if..else. If you want to learn to use, the best way to practice is to write an if..else block and then to convert it into ternary logic. The following examples are the two more common cases (the third one involves the return keyword and it is utilized in functions, which will be discussed in the next chapters).
@@ -230,7 +230,7 @@ The elseif keyword is very useful you have multiple conditions to check for. How
 ![Example: switch](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/switch.png)
 
 Its syntax is the following:
-```
+```php
 switch (expression)
   {
   case value1
@@ -246,7 +246,6 @@ switch (expression)
      (optional) code to be executed if none of the above conditions are true.
      break;
   }
-?>
 ```
 The keyword switch precedes the variable to be tested, whereas the keyword "case" introduces the possible values that the variable might have. Intuitively, the first case behaves similarly to the if part of an if..elseif structure whereas the others are equivalent to the elseif parts. The keyword "default" addresses the situation in which the variable does not match any of the cases tested earlier, and it is equivalent to the else block of an if..else/if...elseif..else structure in the sense that it catches cases not explicitly mentioned. It is optional.
 There is a fundamental difference between the switch-case statement and the if-elseif-else statement: the if..elseif..else statement creates a different execution path for every block, whereas the switch statement evaluates cases sequentially and executes instructions line by line. As a result, if a case is verified, PHP will automatically execute all the following lines of code, including any subsequent case statements (even if they are not verified) until it reaches the end of the switch block. To prevent this from happening, the keyword break is added to the end of each case block. The break statement is utilized to exit from the current block and to continue execution after the end of the structure in which the execution flow is currently in. As a result, the break statement at the end of each case will prevent PHP from automatically executing all the statements following a the block of a case that verifies a condition. 
@@ -328,9 +327,9 @@ The while loop is the simplest type of loop, as it checks for the condition and 
 ![Example: while](https://nicholascaporusso.github.io/OER_back-end_with_PHP_MySQL/chapter_4/while.png)
 
 Its syntax is the following
-```
-while(expression){
-	
+```php
+while(<expression>){
+    <instructions>
 }
 ```
 
@@ -392,7 +391,7 @@ The do..while loop is very similar to the while loop and it is utilized very rar
 
 Its syntax is the following
 
-```
+```php
 do{
 
 }while(condition);
@@ -415,12 +414,14 @@ do{
 ```
 
 Indeed, the code looks very similar to the previous example, as the only change (in addition to the "do" keyword) is the condition, which now is at the end of the loop. However, the result will be different in that it will loop one less time. The second example about the while loop, when translated using the do..while (shown below), will produce similar behavior. We could make them work in exactly the same way as their while counterparts by tweaking the exit condition, or by initializing the variables differently.
-
+```php
+<?php
 $i=0
 do{
 echo $i++
 }while($i<5);
-
+?>
+```
 The do..while loop might seem useless, at this point. However, it can be suitable for some applications, as shown below. Nevertheless, programmers prefer to use the while loop. In the following example the do..while loop is utilized to calculate the factorial of a number.
 
 ```php
@@ -442,7 +443,7 @@ As demonstrated by all the examples so far, the use of loops typically involves 
 
 Although there are exceptions, such as, the example involving generating a new string, the exit condition of most of the loops involves an integer variable that is (1) initialized, (2) tested, and then (3) manipulated, that is, incremented or decremented. In these situations, the for loop is the most convenient choice, as it enables to incorporate the three steps described above in a single expression. Its syntax is the following
 
-```
+```php
 for(initialization;test;manipulation){
 actions
 }
@@ -457,7 +458,8 @@ We can combine the switch case and the for loop to print the whole calendar for 
 [example combining leap year and printing all the days] 
 
 For instance, if we want to implement a traffic light in PHP, we can use the following code, which allows us to represent the current color and the transition to the next color:
-
+```php
+<?php
 $lightColor='green';
 if($lightcolor=='green'){
 echo '<span style='color:"'' THe traffic light is Green;
@@ -469,7 +471,8 @@ $lightColor='green'
 the traffic light is yellow.
 $lightColor=red
 }
-
+?>
+```
 In general, when utilized to loop through arrays, the for structure is not expected to add or remove elements, as it might produce errors. In the previous two examples, the function count(array) is utilized to get the length of the array. Although it could be incorporated in the definition of the loop, this would cause the program to calculate the length of the array at every loop, when the condition is evaluated. However, as the length of the array is not expected to change during the loop, this would just be a waste of processing resources, which could be significant if the array is very large. By calculating the length of the array before the loop, we can optimize the performance of our code.
 
 ### Foreach
@@ -480,40 +483,52 @@ The fourth type of interative structure implemented in PHP is the foreach loop, 
 The general structure of a foreach loop is defined by the following pseudo-code:
 ```php
 foreach(set as element){
-	instructions
+	<instructions>
 }
 ```
 The statement in  parentheses has two main components, set and element. The former is the variable that contains a set of elements, that is, the array or recordset we want to loop through. The latter is a variable name that will contain each of the elements of the array. When this block is encountered the first time, the program will evaluate if the set contains any elements; if so, the variable specified in the element will be assigned with the first element of the array, so that it will be available within the loop. Then, the block of instructions will be executed, and it will have access to the element of the array via the variable. After the block and at the beginning of every loop, the program will go back to the condition evaluation, and it will check if there's another element. If so, the variable specified in element will be overweritten, otherwise the loop will terminate. The foreach block will naturally end its operation when all the elements of the array have been considered.
 
 An implementation of the foreach loop is the following.
+```php
+<?php
 $beatles=['John Lennon','Paul McCartney','George Harrison','Ringo Starr'];
 foreach($beatles as $member){
 	echo $member;
 	echo '<br />';
 }
+?>
+```
 
 As you can see from the example, the first element of the condition is the name of the array to be considered (i.e., $beatles), whereas the second element is a new arbitrary variable name ($member). The content of the second variable will change at every iteration. Intuitively, the main advantage of the foreach loop in comparison with the other types of iteration structuresis  in that we don't have to manually deal with the length of the array and we don't have to worry about the exit condition: the program will automatically stop iterating when there will be no more elements in the array.
 
-As in other  structures for flow control, curly braces that define the block can be omitted if there is only one instruction. 
+As in other  structures for flow control, curly braces that define the block can be omitted if there is only one instruction.
+```php
+<?php
 $months[];
 foreach($months as $month) echo $month;
+?>
+```
 
 The following example implements  the foreach loop to display every month in a year.
 
 As mentioned previously, the foreach loop automatically assigns the value of the element to a variable. Therefore, in case of an associative array, we need to use a slightly different syntax to access the key of the element, together with its values, as described in the pseudo-code below:
-```
+```php
 foreach(set as key=>value){
-actions
+<actions>
 } 
 ```
 Intuitively, at every loop the foreach structure will conside a new element: key is the name of the variable that will contain the key of the element, whereas value is the name of the variable that will receive the value of the elmement. The following example will display the name of the month and the days in every month
-
+```php
+<?php
 $months=['January','February','March'];
 foreach($months as $month=>$days){
 }
+?>
+```
 
 As in the example with indexed arrays, the variables that will be assigned with the key and value of the element can be named arbitrarily. As foreach loops greatly simplify working with arrays, they are typically preferred to for loops. However, there is a main difference between the two constructs: at each iteration the foreach loop makes a copy of the element (or of its key and value) and assigns it to the variable (or to the variables) specified in the parentheses. As a result, any change to the variable will not affect the content of the array. Consider the following example
-
+```php
+<?php
 $days_of_week=
 $index=0;
 foreach($days_of_week as $day) {
@@ -521,9 +536,12 @@ $day='day'.$i++;
 echo $day;
 }
 print_r $days_of_week;
+?>
+```
 
 Although the assignment statement in the block of the loop changes the value of the variable day, it will not modify the content of the corresponding element of the array $days_of_week, because $day will contain  a copy of each of the elements of the array. Instead, the for loop does not suffer from this limitation, as the elements of the array will be accessed by their index, directly from within the array itself.  Let's implement the previous example using a for loop and let's analyze the difference
-
+```php
+<?php
 $days_of_week=
 $index=0;
 for($index=0l$days_of_week as $day) {
@@ -531,19 +549,26 @@ $day='day'.$i++;
 echo $day;
 }
 print_r $days_of_week;
+?>
+```
 
 In this case, the integer variable is utilized to access the element of the array $days_of_week by its index. As a result, the assignment instruction in the block of the loop will access and change the content of the array $days_of_week. Using a for loop is the only way to iterate through the elements of an array to modify their content.  Unfortunately, the for loop cannot be utilized to directly access the elements of an associative array, because it does not necessarily have numeric and sequential keys. Nevertheless, we can use the function array_keys to access the indexed array containing the keys of the array, and then we can use a foreach loop to access each element of the array by its key as follows.
 
+```php
+<?php
 $days_of_week=['monday'=>'first day'...
 $keys=array_keys($days_of_week)
 foreach($keys as $key){
 
 }
+?>
+```
 
 The following code has exactly the same behavior of the example above, though it uses a for loop instead of foreach.
 
+```php
 for(i...).
-
+```
 
 Foreach loops can be utilized in combination with other types of data structures, such as, objects and resources, as discussed in the next chapters. 
 
@@ -571,6 +596,8 @@ As described in the section about the switch...case conditional statement, the  
 
 In the following example, a foreach loop is utilized to iterate over an associative array containing a set of users to verify if the email and password entered by the user match the credentials stored in the system. Once a match is found, the break keyword prevents from considering the subsequent elements.
 
+```php
+<?php
 $users
 foreach($users as $username=>$password){
 if($username==$entered_username && $password){
@@ -579,9 +606,13 @@ break;
 }
 } 
 echo $match ? 'Welcome to our website' : 'The username or password does not match'
+?>
+```
 
 The continue statement is similar to break in that it prevents the program from executing the next lines in the block of the loop. However, break will completely exit the loop, whereas continue will  return to the condition evaluation. As a result, the program will stay in the loop and it will test the expression in the exit condition: if it is verified, the block of instructions will be executed again, otherwise the program will exit the block. This can be useful if we want to match more than one elements: by using continue instead of break, we will continue looping after the first match. In the following example, we want to display all the orders that are waiting to be shipped.  
 
+```php
+<?php
 $orders=[id...status
 foreach($orders as $id=>$status){
 if($username==$entered_username && $password){
@@ -590,7 +621,8 @@ break;
 }
 } 
 echo $match ? 'Welcome to our website' : 'The username or password does not match'
-
+?>
+```
 The keywords Break and continue can be utilized with any type of loop. Moreover, in case of nested loops, they have effect on the innermost structure, only.
 
 
